@@ -5,9 +5,9 @@ MLTableAlert is completely based on UIView and it isn't a custom subclass of UIA
 Here are some features:  
 
 * **Block-based**, no more delegates required.
-* "**table**" property to access to the table view.
-* "**completionBlock**" property to configure actions which have to be performed when Cancel button is pressed
-* "**selectionBlock**" property to configure actions which have to be performed when a row in table view is pressed
+* **table** property to access to the table view.
+* **completionBlock** property to configure actions which have to be performed when Cancel button is pressed
+* **selectionBlock** property to configure actions which have to be performed when a row in table view is pressed
 * Table alert creation through _class_ or _init_ method
 * Table view customization managed by blocks: style your cells as you want
 * Beautiful animations
@@ -20,7 +20,7 @@ This is how the alert looks like:
   
 Use MLTableAlert in your projects
 ---
-1. Download the latest code version from the repository (using the Download Source button or your preferred command-line tool.
+1. Download the latest code version from the repository (using the Download Source button or your preferred command-line tool).
 2. If you have to, extract the archive.
 3. All you need is contained in the **MLTableAlert Files** folder.
 4. Drag it to your project and make sure that the option Copy items is checked.
@@ -28,7 +28,7 @@ Use MLTableAlert in your projects
 
 Demo
 ---
-A demo project, called **MLTableAlertDemo**, is included in the project so you will see how to use this class.  
+A demo project, called **MLTableAlertDemo**, is included so you will see how to use this class.  
 
 License
 ---

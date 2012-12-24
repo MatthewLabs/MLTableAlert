@@ -1,7 +1,7 @@
 MLTableAlert
 ===
-**MLTableAlert is a block-based UIAlertView replacement which allows you to show table view in alerts for fast selection.**  
-MLTableAlert is completely based on UIView and it isn't a custom subclass of UIAlertView.  
+**[MLTableAlert][1] is a block-based UIAlertView replacement which allows you to show table view in alerts for fast selection.**  
+MLTableAlert is completely based on UIView and it isn't a custom subclass of UIAlertView. It supports ARC and is compatible with iOS SDK 5.0 or later.  
 Here are some features:  
 
 * **Block-based**, no more delegates required.
@@ -48,12 +48,13 @@ Credits
 **Matteo Del Vecchio**  
 **Matthew Labs**  
   
-Web: [Matthew Labs][1]  
-Twitter: [@MatthewLabs][2]  
-Facebook: [facebook.com/MatthewLabsDev][3]  
-Google+: [Matthew Labs Page][4]  
+Web: [Matthew Labs][2]  
+Twitter: [@MatthewLabs][3]  
+Facebook: [facebook.com/MatthewLabsDev][4]  
+Google+: [Matthew Labs Page][5]  
   
-  [1]: http://www.matthewlabs.com/ "Matthew Labs"
-  [2]: http://twitter.com/MatthewLabs "Matthew Labs on Twitter"
-  [3]: http://www.facebook.com/MatthewLabsDev "Matthew Labs on Facebook"
-  [4]: https://plus.google.com/117759042318503506347 "Matthew Labs on Google+"
+  [1]: http://www.matthewlabs.com/blog/mltablealert-an-overview/
+  [2]: http://www.matthewlabs.com/ "Matthew Labs"
+  [3]: http://twitter.com/MatthewLabs "Matthew Labs on Twitter"
+  [4]: http://www.facebook.com/MatthewLabsDev "Matthew Labs on Facebook"
+  [5]: https://plus.google.com/117759042318503506347 "Matthew Labs on Google+"

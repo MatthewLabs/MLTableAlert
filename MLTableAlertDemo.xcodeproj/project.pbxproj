@@ -315,7 +315,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MLTableAlertDemo/MLTableAlertDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MLTableAlertDemo/MLTableAlertDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = MLTableAlertDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -328,7 +328,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MLTableAlertDemo/MLTableAlertDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MLTableAlertDemo/MLTableAlertDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = MLTableAlertDemo;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

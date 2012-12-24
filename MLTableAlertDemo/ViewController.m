@@ -34,7 +34,7 @@
 	// create the alert
 	self.alert = [MLTableAlert tableAlertWithTitle:@"Choose an option..." cancelButtonTitle:@"Cancel" numberOfRows:^NSInteger (NSInteger section)
 	{
-		if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0)
+		if (self.rowsNumField.text == nil || [self.rowsNumField.text length] == 0 || [self.rowsNumField.text isEqualToString:@"0"])
 			return 1;
 		else
 			return [self.rowsNumField.text integerValue];

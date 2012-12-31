@@ -51,6 +51,9 @@
 		return cell;
 	}];
 	
+	// Setting custom alert height
+	self.alert.height = 350;
+	
 	// configure actions to perform
 	[self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex){
 		self.resultLabel.text = [NSString stringWithFormat:@"Selected Index\nSection: %d Row: %d", selectedIndex.section, selectedIndex.row];

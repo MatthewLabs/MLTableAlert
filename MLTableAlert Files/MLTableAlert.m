@@ -11,9 +11,13 @@
 #import "MLTableAlert.h"
 
 
-#define kTableAlertWidth 284.0
-#define kLateralInset 12.0
-#define kVerticalInset 8.0
+#define kTableAlertWidth     284.0
+#define kLateralInset         12.0
+#define kVerticalInset         8.0
+#define kMinAlertHeight      264.0
+#define kCancelButtonHeight   44.0
+#define kCancelButtonMargin    5.0
+#define kTitleLabelMargin     12.0
 
 
 @interface MLTableAlert ()
@@ -60,10 +64,11 @@
 	self = [super init];
 	if (self)
 	{
-		self.numberOfRows = rowsBlock;
-		self.cells = cellsBlock;
-		self.title = title;
-		self.cancelButtonTitle = cancelButtonTitle;
+		_numberOfRows = rowsBlock;
+		_cells = cellsBlock;
+		_title = title;
+		_cancelButtonTitle = cancelButtonTitle;
+		_height = kMinAlertHeight;	// Defining default (and minimum) alert height
 	}
 	
 	return self;
@@ -159,7 +164,7 @@
 	
 	// table view creation
 	self.table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-	self.table.frame = CGRectMake(kLateralInset, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 12, kTableAlertWidth - kLateralInset * 2, 150);
+	self.table.frame = CGRectMake(kLateralInset, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + kTitleLabelMargin, kTableAlertWidth - kLateralInset * 2, (self.height - kVerticalInset * 2) - self.titleLabel.frame.origin.y - self.titleLabel.frame.size.height - kTitleLabelMargin - kCancelButtonMargin - kCancelButtonHeight);
 	self.table.layer.cornerRadius = 6.0;
 	self.table.layer.masksToBounds = YES;
 	self.table.delegate = self;
@@ -184,7 +189,7 @@
 	
 	// cancel button creation
 	self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	self.cancelButton.frame = CGRectMake(kLateralInset, self.table.frame.origin.y + self.table.frame.size.height + 5, kTableAlertWidth - kLateralInset * 2, 44);
+	self.cancelButton.frame = CGRectMake(kLateralInset, self.table.frame.origin.y + self.table.frame.size.height + kCancelButtonMargin, kTableAlertWidth - kLateralInset * 2, kCancelButtonHeight);
 	self.cancelButton.titleLabel.textAlignment = NSTextAlignmentCenter;
 	self.cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
 	self.cancelButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
@@ -199,12 +204,9 @@
 	[self.cancelButton addTarget:self action:@selector(dismissTableAlert) forControlEvents:UIControlEventTouchUpInside];
 	[self.alertBg addSubview:self.cancelButton];
 	
-	// calculating total height of the alert
-	CGFloat alertHeight = self.cancelButton.frame.origin.y + self.cancelButton.frame.size.height + kVerticalInset * 2;
-	
 	// setting alert and alert background image frames
-	self.alertBg.frame = CGRectMake((self.frame.size.width - kTableAlertWidth) / 2, (self.frame.size.height - alertHeight) / 2, kTableAlertWidth, self.cancelButton.frame.origin.y + self.cancelButton.frame.size.height);
-	alertBgImage.frame = CGRectMake(0.0, 0.0, kTableAlertWidth, alertHeight);
+	self.alertBg.frame = CGRectMake((self.frame.size.width - kTableAlertWidth) / 2, (self.frame.size.height - self.height) / 2, kTableAlertWidth, self.height - kVerticalInset * 2);
+	alertBgImage.frame = CGRectMake(0.0, 0.0, kTableAlertWidth, self.height);
 	
 	// the alert will be the first responder so any other controls,
 	// like the keyboard, will be dismissed before the alert
@@ -231,6 +233,15 @@
 -(BOOL)canBecomeFirstResponder
 {
 	return YES;
+}
+
+// Alert height setter
+-(void)setHeight:(CGFloat)height
+{
+	if (height > kMinAlertHeight)
+		_height = height;
+	else
+		_height = kMinAlertHeight;
 }
 
 #pragma mark - UITableViewDataSource

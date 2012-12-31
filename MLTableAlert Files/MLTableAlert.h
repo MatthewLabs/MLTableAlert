@@ -25,6 +25,8 @@ typedef void (^MLTableAlertCompletionBlock)(void);
 
 @property (nonatomic, strong) UITableView *table;
 
+@property (nonatomic, assign) CGFloat height;
+
 @property (nonatomic, strong) MLTableAlertCompletionBlock completionBlock;	// Called when Cancel button pressed
 @property (nonatomic, strong) MLTableAlertRowSelectionBlock selectionBlock;	// Called when a row in table view is pressed
 

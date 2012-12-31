@@ -8,6 +8,7 @@ Here are some features:
 * **table** property to access to the table view.
 * **completionBlock** property to configure actions which have to be performed when Cancel button is pressed
 * **selectionBlock** property to configure actions which have to be performed when a row in table view is pressed
+* Custom height settings
 * Table alert creation through _class_ or _init_ method
 * Table view customization managed by blocks: style your cells as you want
 * Beautiful animations
@@ -38,6 +39,11 @@ For warranties and other info about this code, read the license file.
   
 Changelog
 ---
+**Version 1.1 @ December 31st, 2012**
+
+* Custom height settings: now you can set your preferred height to the alert
+* Changed properties to instance variables in initialization methods  
+
 **Version 1.0 @ December 22nd, 2012**  
 
 * Initial release: probably there are some bugs and the code could be improved…  

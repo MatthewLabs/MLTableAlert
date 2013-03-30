@@ -312,11 +312,15 @@
 		95B980DE163576030010A95F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Giovanni Del Vecchio (6243J65725)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Giovanni Del Vecchio (6243J65725)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MLTableAlertDemo/MLTableAlertDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MLTableAlertDemo/MLTableAlertDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = MLTableAlertDemo;
+				PROVISIONING_PROFILE = "B3AF48FE-0CC7-4285-8274-6E89D28C28E8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B3AF48FE-0CC7-4285-8274-6E89D28C28E8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -325,11 +329,15 @@
 		95B980DF163576030010A95F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Giovanni Del Vecchio (6243J65725)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Giovanni Del Vecchio (6243J65725)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MLTableAlertDemo/MLTableAlertDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MLTableAlertDemo/MLTableAlertDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = MLTableAlertDemo;
+				PROVISIONING_PROFILE = "B3AF48FE-0CC7-4285-8274-6E89D28C28E8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B3AF48FE-0CC7-4285-8274-6E89D28C28E8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

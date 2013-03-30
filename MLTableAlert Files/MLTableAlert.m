@@ -20,10 +20,51 @@
 #define kTitleLabelMargin     12.0
 
 
+// Since orientation is managed by view controllers,
+// MLTableAlertController is used under the MLTableAlert
+// to provide support for orientation and rotation
+@interface MLTableAlertController : UIViewController
+@end
+
+@implementation MLTableAlertController
+
+// Orientation support
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+		return YES;
+	else
+		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	MLTableAlert *ta = [self.view.subviews lastObject];
+	if (ta != nil && [ta isKindOfClass:[MLTableAlert class]])
+	{
+		// Rotate the MLTableAlert if orientation changes
+		// when it is visible on screen
+		[UIView animateWithDuration:duration animations:^{
+			[ta sizeToFit];
+			
+			CGFloat x = CGRectGetMidX(self.view.bounds);
+			CGFloat y = CGRectGetMidY(self.view.bounds);
+			ta.center = CGPointMake(x, y);
+			ta.frame = CGRectIntegral(ta.frame);
+		}];
+	}
+	else
+		return;
+}
+
+@end
+
+
 @interface MLTableAlert ()
 @property (nonatomic, strong) UIView *alertBg;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) UIWindow *appWindow;
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *cancelButtonTitle;
@@ -87,18 +128,29 @@
 	// reset cellSelected value
 	self.cellSelected = NO;
 	
-	// adding some styles to background view (behind table alert)
-	self.frame = [[UIScreen mainScreen] bounds];
-	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
-	self.opaque = NO;
+	// Allocating controller for presenting MLTableAlert
+	MLTableAlertController *controller = [[MLTableAlertController alloc] init];
+	controller.view.backgroundColor = [UIColor clearColor];
 	
-	// adding it as subview of app's UIWindow
-	UIWindow *appWindow = [[UIApplication sharedApplication] keyWindow];
-	[appWindow addSubview:self];
+	// Creating new UIWindow to manage MLTableAlert and MLTableAlertController
+	self.appWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.appWindow.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+	self.appWindow.rootViewController = controller;
+	self.appWindow.alpha = 0.0;
+	self.appWindow.windowLevel = UIWindowLevelStatusBar;
+	self.appWindow.hidden = NO;
+	[self.appWindow makeKeyAndVisible];
+	
+	// Adding MLTableAlert as subview of MLTableAlertController (controller)
+	[controller.view addSubview:self];
+	
+	// setting options to MLTableAlert
+	self.frame = self.superview.bounds;
+	self.opaque = NO;
 	
 	// get background color darker
 	[UIView animateWithDuration:0.2 animations:^{
-		self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+		self.appWindow.alpha = 1.0;
 	}];
 }
 
@@ -129,10 +181,12 @@
 		} completion:^(BOOL finished) {
 			[UIView animateWithDuration:0.3 animations:^{
 				self.alertBg.transform = CGAffineTransformMakeScale(0.01, 0.01);
-				self.alpha = 0.3;
+				self.appWindow.alpha = 0.3;
 			} completion:^(BOOL finished){
 				// table alert not shown anymore
 				[self removeFromSuperview];
+				self.appWindow.hidden = YES;
+				[self.appWindow resignKeyWindow];
 			}];
 		}];
 	}];

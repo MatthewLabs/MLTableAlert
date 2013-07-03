@@ -218,7 +218,7 @@
 	
 	// table view creation
 	self.table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-	self.table.frame = CGRectMake(kLateralInset, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + kTitleLabelMargin, kTableAlertWidth - kLateralInset * 2, (self.height - kVerticalInset * 2) - self.titleLabel.frame.origin.y - self.titleLabel.frame.size.height - kTitleLabelMargin - kCancelButtonMargin - kCancelButtonHeight);
+	self.table.frame = CGRectMake(kLateralInset, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + kTitleLabelMargin, kTableAlertWidth - kLateralInset * 2, (self.height - kVerticalInset * 2) - self.titleLabel.frame.origin.y - self.titleLabel.frame.size.height - kTitleLabelMargin - (kCancelButtonMargin + kCancelButtonHeight)*(self.cancelButtonTitle ? 1 : 0));
 	self.table.layer.cornerRadius = 6.0;
 	self.table.layer.masksToBounds = YES;
 	self.table.delegate = self;
@@ -256,7 +256,8 @@
 	self.cancelButton.opaque = NO;
 	self.cancelButton.layer.cornerRadius = 5.0;
 	[self.cancelButton addTarget:self action:@selector(dismissTableAlert) forControlEvents:UIControlEventTouchUpInside];
-	[self.alertBg addSubview:self.cancelButton];
+    if (self.cancelButtonTitle)
+        [self.alertBg addSubview:self.cancelButton];
 	
 	// setting alert and alert background image frames
 	self.alertBg.frame = CGRectMake((self.frame.size.width - kTableAlertWidth) / 2, (self.frame.size.height - self.height) / 2, kTableAlertWidth, self.height - kVerticalInset * 2);

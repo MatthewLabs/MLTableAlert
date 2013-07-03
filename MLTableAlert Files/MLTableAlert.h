@@ -1,9 +1,11 @@
 //
 //  MLTableAlert.h
 //
-//  Version 1.0
+//  Version 1.3
 //
 //  Created by Matteo Del Vecchio on 11/12/12.
+//  Updated on 03/07/2013.
+//
 //  Copyright (c) 2012 Matthew Labs. All rights reserved.
 //  For the complete copyright notice, read Source Code License.
 //
@@ -31,10 +33,12 @@ typedef void (^MLTableAlertCompletionBlock)(void);
 @property (nonatomic, strong) MLTableAlertRowSelectionBlock selectionBlock;	// Called when a row in table view is pressed
 
 
-// Classe method; rowsBlock and cellsBlock MUST NOT be nil 
+// Classe method; rowsBlock and cellsBlock MUST NOT be nil
+// Pass NIL to cancelButtonTitle to show an alert without cancel button
 +(MLTableAlert *)tableAlertWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelBtnTitle numberOfRows:(MLTableAlertNumberOfRowsBlock)rowsBlock andCells:(MLTableAlertTableCellsBlock)cellsBlock;
 
 // Initialization method; rowsBlock and cellsBlock MUST NOT be nil
+// Pass NIL to cancelButtonTitle to show an alert without cancel button
 -(id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelBtnTitle numberOfRows:(MLTableAlertNumberOfRowsBlock)rowsBlock andCells:(MLTableAlertTableCellsBlock)cellsBlock;
 
 // Allows you to perform custom actions when a row is selected or the cancel button is pressed

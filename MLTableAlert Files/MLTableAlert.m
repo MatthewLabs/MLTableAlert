@@ -1,9 +1,11 @@
 //
 //  MLTableAlert.m
 //
-//  Version 1.0
+//  Version 1.3
 //
 //  Created by Matteo Del Vecchio on 11/12/12.
+//  Updated on 03/07/2013.
+//
 //  Copyright (c) 2012 Matthew Labs. All rights reserved.
 //  For the complete copyright notice, read Source Code License.
 //
@@ -242,22 +244,24 @@
 	[self.alertBg addSubview:maskShadow];
 	
 	// cancel button creation
-	self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	self.cancelButton.frame = CGRectMake(kLateralInset, self.table.frame.origin.y + self.table.frame.size.height + kCancelButtonMargin, kTableAlertWidth - kLateralInset * 2, kCancelButtonHeight);
-	self.cancelButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-	self.cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
-	self.cancelButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
-	self.cancelButton.titleLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.75];
-	[self.cancelButton setTitle:self.cancelButtonTitle forState:UIControlStateNormal];
-	[self.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[self.cancelButton setBackgroundColor:[UIColor clearColor]];
-	[self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"MLTableAlertButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
-	[self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"MLTableAlertButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
-	self.cancelButton.opaque = NO;
-	self.cancelButton.layer.cornerRadius = 5.0;
-	[self.cancelButton addTarget:self action:@selector(dismissTableAlert) forControlEvents:UIControlEventTouchUpInside];
-    if (self.cancelButtonTitle)
-        [self.alertBg addSubview:self.cancelButton];
+	if (self.cancelButtonTitle)
+	{
+		self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		self.cancelButton.frame = CGRectMake(kLateralInset, self.table.frame.origin.y + self.table.frame.size.height + kCancelButtonMargin, kTableAlertWidth - kLateralInset * 2, kCancelButtonHeight);
+		self.cancelButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+		self.cancelButton.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
+		self.cancelButton.titleLabel.shadowOffset = CGSizeMake(0, -1);
+		self.cancelButton.titleLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.75];
+		[self.cancelButton setTitle:self.cancelButtonTitle forState:UIControlStateNormal];
+		[self.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		[self.cancelButton setBackgroundColor:[UIColor clearColor]];
+		[self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"MLTableAlertButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
+		[self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"MLTableAlertButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
+		self.cancelButton.opaque = NO;
+		self.cancelButton.layer.cornerRadius = 5.0;
+		[self.cancelButton addTarget:self action:@selector(dismissTableAlert) forControlEvents:UIControlEventTouchUpInside];
+		[self.alertBg addSubview:self.cancelButton];
+	}
 	
 	// setting alert and alert background image frames
 	self.alertBg.frame = CGRectMake((self.frame.size.width - kTableAlertWidth) / 2, (self.frame.size.height - self.height) / 2, kTableAlertWidth, self.height - kVerticalInset * 2);

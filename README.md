@@ -40,6 +40,12 @@ For warranties and other info about this code, read the license file.
   
 Changelog
 ---
+**Version 1.3 @ July 3rd, 2013**  
+  
+* Cancel button can also be omitted to show an alert for mandatory selection
+* Cancel button drawing improvements
+* Fixed typo and version numbers
+
 **Version 1.2 @ March 30th, 2013**
 
 * Landscape and Orientation support for iPad
